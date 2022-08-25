@@ -26,6 +26,8 @@ message MsgSubmitGuess {
 }
 
 message MsgSubmitGuessResponse {
+  string title = 1;
+  string body = 2;
 }
 
 // this line is used by starport scaffolding # proto/tx/message
