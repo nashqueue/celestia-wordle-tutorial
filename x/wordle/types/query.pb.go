@@ -6,7 +6,7 @@ package types
 import (
 	context "context"
 	fmt "fmt"
-	_ "github.com/cosmos/cosmos-sdk/types/query"
+	query "github.com/cosmos/cosmos-sdk/types/query"
 	_ "github.com/gogo/protobuf/gogoproto"
 	grpc1 "github.com/gogo/protobuf/grpc"
 	proto "github.com/gogo/protobuf/proto"
@@ -113,34 +113,233 @@ func (m *QueryParamsResponse) GetParams() Params {
 	return Params{}
 }
 
+type QueryGetWordleRequest struct {
+	Index string `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
+}
+
+func (m *QueryGetWordleRequest) Reset()         { *m = QueryGetWordleRequest{} }
+func (m *QueryGetWordleRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetWordleRequest) ProtoMessage()    {}
+func (*QueryGetWordleRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ec721809ef421566, []int{2}
+}
+func (m *QueryGetWordleRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetWordleRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetWordleRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetWordleRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetWordleRequest.Merge(m, src)
+}
+func (m *QueryGetWordleRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetWordleRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetWordleRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetWordleRequest proto.InternalMessageInfo
+
+func (m *QueryGetWordleRequest) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+type QueryGetWordleResponse struct {
+	Wordle Wordle `protobuf:"bytes,1,opt,name=wordle,proto3" json:"wordle"`
+}
+
+func (m *QueryGetWordleResponse) Reset()         { *m = QueryGetWordleResponse{} }
+func (m *QueryGetWordleResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetWordleResponse) ProtoMessage()    {}
+func (*QueryGetWordleResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ec721809ef421566, []int{3}
+}
+func (m *QueryGetWordleResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetWordleResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetWordleResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetWordleResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetWordleResponse.Merge(m, src)
+}
+func (m *QueryGetWordleResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetWordleResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetWordleResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetWordleResponse proto.InternalMessageInfo
+
+func (m *QueryGetWordleResponse) GetWordle() Wordle {
+	if m != nil {
+		return m.Wordle
+	}
+	return Wordle{}
+}
+
+type QueryAllWordleRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllWordleRequest) Reset()         { *m = QueryAllWordleRequest{} }
+func (m *QueryAllWordleRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllWordleRequest) ProtoMessage()    {}
+func (*QueryAllWordleRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ec721809ef421566, []int{4}
+}
+func (m *QueryAllWordleRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllWordleRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllWordleRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllWordleRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllWordleRequest.Merge(m, src)
+}
+func (m *QueryAllWordleRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllWordleRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllWordleRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllWordleRequest proto.InternalMessageInfo
+
+func (m *QueryAllWordleRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllWordleResponse struct {
+	Wordle     []Wordle            `protobuf:"bytes,1,rep,name=wordle,proto3" json:"wordle"`
+	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllWordleResponse) Reset()         { *m = QueryAllWordleResponse{} }
+func (m *QueryAllWordleResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllWordleResponse) ProtoMessage()    {}
+func (*QueryAllWordleResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ec721809ef421566, []int{5}
+}
+func (m *QueryAllWordleResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllWordleResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllWordleResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllWordleResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllWordleResponse.Merge(m, src)
+}
+func (m *QueryAllWordleResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllWordleResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllWordleResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllWordleResponse proto.InternalMessageInfo
+
+func (m *QueryAllWordleResponse) GetWordle() []Wordle {
+	if m != nil {
+		return m.Wordle
+	}
+	return nil
+}
+
+func (m *QueryAllWordleResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "yazzyyaz.wordle.wordle.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "yazzyyaz.wordle.wordle.QueryParamsResponse")
+	proto.RegisterType((*QueryGetWordleRequest)(nil), "yazzyyaz.wordle.wordle.QueryGetWordleRequest")
+	proto.RegisterType((*QueryGetWordleResponse)(nil), "yazzyyaz.wordle.wordle.QueryGetWordleResponse")
+	proto.RegisterType((*QueryAllWordleRequest)(nil), "yazzyyaz.wordle.wordle.QueryAllWordleRequest")
+	proto.RegisterType((*QueryAllWordleResponse)(nil), "yazzyyaz.wordle.wordle.QueryAllWordleResponse")
 }
 
 func init() { proto.RegisterFile("wordle/query.proto", fileDescriptor_ec721809ef421566) }
 
 var fileDescriptor_ec721809ef421566 = []byte{
-	// 303 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x2a, 0xcf, 0x2f, 0x4a,
-	0xc9, 0x49, 0xd5, 0x2f, 0x2c, 0x4d, 0x2d, 0xaa, 0xd4, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x12,
-	0xab, 0x4c, 0xac, 0xaa, 0xaa, 0xac, 0x4c, 0xac, 0xd2, 0x83, 0x48, 0x42, 0x29, 0x29, 0x91, 0xf4,
-	0xfc, 0xf4, 0x7c, 0xb0, 0x12, 0x7d, 0x10, 0x0b, 0xa2, 0x5a, 0x4a, 0x26, 0x3d, 0x3f, 0x3f, 0x3d,
-	0x27, 0x55, 0x3f, 0xb1, 0x20, 0x53, 0x3f, 0x31, 0x2f, 0x2f, 0xbf, 0x24, 0xb1, 0x24, 0x33, 0x3f,
-	0xaf, 0x18, 0x2a, 0xab, 0x95, 0x9c, 0x5f, 0x9c, 0x9b, 0x5f, 0xac, 0x9f, 0x94, 0x58, 0x0c, 0xb5,
-	0x44, 0xbf, 0xcc, 0x30, 0x29, 0xb5, 0x24, 0xd1, 0x50, 0xbf, 0x20, 0x31, 0x3d, 0x33, 0x0f, 0xac,
-	0x18, 0xaa, 0x56, 0x18, 0xea, 0x96, 0x82, 0xc4, 0xa2, 0xc4, 0x5c, 0xa8, 0x01, 0x4a, 0x22, 0x5c,
-	0x42, 0x81, 0x20, 0x6d, 0x01, 0x60, 0xc1, 0xa0, 0xd4, 0xc2, 0xd2, 0xd4, 0xe2, 0x12, 0xa5, 0x60,
-	0x2e, 0x61, 0x14, 0xd1, 0xe2, 0x82, 0xfc, 0xbc, 0xe2, 0x54, 0x21, 0x1b, 0x2e, 0x36, 0x88, 0x66,
-	0x09, 0x46, 0x05, 0x46, 0x0d, 0x6e, 0x23, 0x39, 0x3d, 0xec, 0x5e, 0xd1, 0x83, 0xe8, 0x73, 0x62,
-	0x39, 0x71, 0x4f, 0x9e, 0x21, 0x08, 0xaa, 0xc7, 0x68, 0x32, 0x23, 0x17, 0x2b, 0xd8, 0x54, 0xa1,
-	0x4e, 0x46, 0x2e, 0x36, 0x88, 0x12, 0x21, 0x2d, 0x5c, 0x46, 0x60, 0xba, 0x4a, 0x4a, 0x9b, 0x28,
-	0xb5, 0x10, 0xb7, 0x2a, 0xa9, 0x35, 0x5d, 0x7e, 0x32, 0x99, 0x49, 0x41, 0x48, 0x4e, 0x3f, 0x12,
-	0xa4, 0x29, 0x32, 0xb1, 0x4a, 0x1f, 0xea, 0x7f, 0x94, 0x60, 0x70, 0x72, 0x3e, 0xf1, 0x48, 0x8e,
-	0xf1, 0xc2, 0x23, 0x39, 0xc6, 0x07, 0x8f, 0xe4, 0x18, 0x27, 0x3c, 0x96, 0x63, 0xb8, 0xf0, 0x58,
-	0x8e, 0xe1, 0xc6, 0x63, 0x39, 0x86, 0x28, 0xcd, 0xf4, 0xcc, 0x92, 0x8c, 0xd2, 0x24, 0xbd, 0xe4,
-	0xfc, 0x5c, 0x0c, 0x33, 0x2a, 0x60, 0x8c, 0x92, 0xca, 0x82, 0xd4, 0xe2, 0x24, 0x36, 0x70, 0x60,
-	0x1a, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0xb8, 0xc4, 0xc8, 0xca, 0xef, 0x01, 0x00, 0x00,
+	// 477 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0x31, 0x6f, 0xd4, 0x30,
+	0x14, 0xc7, 0xcf, 0x2d, 0x8d, 0x54, 0xb3, 0xb9, 0x47, 0x85, 0x22, 0x64, 0xaa, 0x0c, 0x47, 0x29,
+	0xaa, 0xad, 0x96, 0x95, 0xa5, 0x45, 0xa2, 0x6b, 0x09, 0x12, 0xa8, 0x2c, 0xc8, 0x69, 0xad, 0x10,
+	0x29, 0x17, 0xa7, 0xb1, 0x0f, 0x9a, 0x20, 0x16, 0x36, 0x36, 0x04, 0x03, 0x23, 0xdf, 0x85, 0xa9,
+	0x63, 0x25, 0x16, 0x26, 0x84, 0xee, 0xf8, 0x20, 0x28, 0x7e, 0x3e, 0xf5, 0x92, 0x6b, 0xc9, 0x31,
+	0xd9, 0x79, 0xfe, 0xbf, 0xff, 0xfb, 0xf9, 0xf9, 0x29, 0x98, 0xbc, 0x55, 0xc5, 0x49, 0x2a, 0xf9,
+	0xe9, 0x48, 0x16, 0x25, 0xcb, 0x0b, 0x65, 0x14, 0x59, 0x2f, 0x45, 0x55, 0x95, 0xa5, 0xa8, 0x18,
+	0x1c, 0xba, 0xc5, 0xef, 0xc7, 0x2a, 0x56, 0x56, 0xc2, 0xeb, 0x1d, 0xa8, 0xfd, 0x3b, 0xb1, 0x52,
+	0x71, 0x2a, 0xb9, 0xc8, 0x13, 0x2e, 0xb2, 0x4c, 0x19, 0x61, 0x12, 0x95, 0x69, 0x77, 0xba, 0x75,
+	0xac, 0xf4, 0x50, 0x69, 0x1e, 0x09, 0xed, 0x8a, 0xf0, 0x37, 0x3b, 0x91, 0x34, 0x62, 0x87, 0xe7,
+	0x22, 0x4e, 0x32, 0x2b, 0x76, 0xda, 0x35, 0xc7, 0x92, 0x8b, 0x42, 0x0c, 0x75, 0x2b, 0xe8, 0x50,
+	0x6c, 0x30, 0xe8, 0x63, 0xf2, 0xb4, 0xf6, 0x3a, 0xb4, 0xca, 0x50, 0x9e, 0x8e, 0xa4, 0x36, 0xc1,
+	0x33, 0xbc, 0xd6, 0x88, 0xea, 0x5c, 0x65, 0x5a, 0x92, 0x47, 0xd8, 0x03, 0xc7, 0xdb, 0x68, 0x03,
+	0x6d, 0xde, 0xdc, 0xa5, 0xec, 0xea, 0xfb, 0x31, 0xc8, 0xdb, 0xbf, 0x71, 0xfe, 0xeb, 0x6e, 0x2f,
+	0x74, 0x39, 0xc1, 0x36, 0xbe, 0x65, 0x4d, 0x0f, 0xa4, 0x79, 0x61, 0x65, 0xae, 0x1a, 0xe9, 0xe3,
+	0x95, 0x24, 0x3b, 0x91, 0x67, 0xd6, 0x75, 0x35, 0x84, 0x8f, 0xe0, 0x39, 0x5e, 0x6f, 0xcb, 0x2f,
+	0x31, 0xa0, 0x4e, 0x17, 0x06, 0xe4, 0x4d, 0x31, 0x20, 0x18, 0xbc, 0x72, 0x18, 0x7b, 0x69, 0xda,
+	0xc4, 0x78, 0x82, 0xf1, 0x65, 0x23, 0x9d, 0xf5, 0x80, 0x41, 0xd7, 0x59, 0xdd, 0x75, 0x06, 0x4f,
+	0xeb, 0xba, 0xce, 0x0e, 0x45, 0x3c, 0xcd, 0x0d, 0x67, 0x32, 0x83, 0x6f, 0xc8, 0x91, 0xcf, 0x54,
+	0xb8, 0x82, 0x7c, 0xf9, 0x7f, 0xc9, 0xc9, 0x41, 0x03, 0x70, 0xc9, 0x02, 0xde, 0xeb, 0x04, 0x84,
+	0xd2, 0xb3, 0x84, 0xbb, 0xdf, 0x97, 0xf1, 0x8a, 0x25, 0x24, 0x1f, 0x11, 0xf6, 0xe0, 0xb1, 0xc8,
+	0xd6, 0x75, 0x2c, 0xf3, 0xf3, 0xe1, 0x3f, 0x58, 0x48, 0x0b, 0x95, 0x83, 0xc1, 0x87, 0x1f, 0x7f,
+	0xbe, 0x2c, 0x6d, 0x10, 0xca, 0x8f, 0xea, 0xa4, 0x23, 0x51, 0xf1, 0xc6, 0x24, 0xba, 0x29, 0x25,
+	0x5f, 0x11, 0xf6, 0xe0, 0xde, 0x64, 0xfb, 0x9f, 0xfe, 0xed, 0x01, 0xf2, 0xd9, 0xa2, 0x72, 0x47,
+	0xc4, 0x2c, 0xd1, 0x26, 0x19, 0x5c, 0x47, 0xe4, 0x96, 0x77, 0x76, 0x12, 0xdf, 0x93, 0xcf, 0x08,
+	0xaf, 0x82, 0xc5, 0x5e, 0x9a, 0x76, 0xc0, 0xb5, 0xc7, 0xaa, 0x03, 0x6e, 0x6e, 0x46, 0xba, 0xdb,
+	0x05, 0xcb, 0xfe, 0xe3, 0xf3, 0x31, 0x45, 0x17, 0x63, 0x8a, 0x7e, 0x8f, 0x29, 0xfa, 0x34, 0xa1,
+	0xbd, 0x8b, 0x09, 0xed, 0xfd, 0x9c, 0xd0, 0xde, 0xcb, 0xfb, 0x71, 0x62, 0x5e, 0x8f, 0x22, 0x76,
+	0xac, 0x86, 0x73, 0x1e, 0x67, 0xd3, 0x8d, 0x29, 0x73, 0xa9, 0x23, 0xcf, 0xfe, 0x05, 0x1e, 0xfe,
+	0x0d, 0x00, 0x00, 0xff, 0xff, 0xd0, 0xfb, 0x4d, 0x0f, 0xbd, 0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -157,6 +356,10 @@ const _ = grpc.SupportPackageIsVersion4
 type QueryClient interface {
 	// Parameters queries the parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
+	// Queries a Wordle by index.
+	Wordle(ctx context.Context, in *QueryGetWordleRequest, opts ...grpc.CallOption) (*QueryGetWordleResponse, error)
+	// Queries a list of Wordle items.
+	WordleAll(ctx context.Context, in *QueryAllWordleRequest, opts ...grpc.CallOption) (*QueryAllWordleResponse, error)
 }
 
 type queryClient struct {
@@ -176,10 +379,32 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
+func (c *queryClient) Wordle(ctx context.Context, in *QueryGetWordleRequest, opts ...grpc.CallOption) (*QueryGetWordleResponse, error) {
+	out := new(QueryGetWordleResponse)
+	err := c.cc.Invoke(ctx, "/yazzyyaz.wordle.wordle.Query/Wordle", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) WordleAll(ctx context.Context, in *QueryAllWordleRequest, opts ...grpc.CallOption) (*QueryAllWordleResponse, error) {
+	out := new(QueryAllWordleResponse)
+	err := c.cc.Invoke(ctx, "/yazzyyaz.wordle.wordle.Query/WordleAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
+	// Queries a Wordle by index.
+	Wordle(context.Context, *QueryGetWordleRequest) (*QueryGetWordleResponse, error)
+	// Queries a list of Wordle items.
+	WordleAll(context.Context, *QueryAllWordleRequest) (*QueryAllWordleResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -188,6 +413,12 @@ type UnimplementedQueryServer struct {
 
 func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
+}
+func (*UnimplementedQueryServer) Wordle(ctx context.Context, req *QueryGetWordleRequest) (*QueryGetWordleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Wordle not implemented")
+}
+func (*UnimplementedQueryServer) WordleAll(ctx context.Context, req *QueryAllWordleRequest) (*QueryAllWordleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WordleAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -212,6 +443,42 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_Wordle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetWordleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Wordle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/yazzyyaz.wordle.wordle.Query/Wordle",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Wordle(ctx, req.(*QueryGetWordleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_WordleAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllWordleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).WordleAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/yazzyyaz.wordle.wordle.Query/WordleAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).WordleAll(ctx, req.(*QueryAllWordleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "yazzyyaz.wordle.wordle.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -219,6 +486,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Params",
 			Handler:    _Query_Params_Handler,
+		},
+		{
+			MethodName: "Wordle",
+			Handler:    _Query_Wordle_Handler,
+		},
+		{
+			MethodName: "WordleAll",
+			Handler:    _Query_WordleAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -281,6 +556,153 @@ func (m *QueryParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetWordleRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetWordleRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetWordleRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetWordleResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetWordleResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetWordleResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.Wordle.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllWordleRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllWordleRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllWordleRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllWordleResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllWordleResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllWordleResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Wordle) > 0 {
+		for iNdEx := len(m.Wordle) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Wordle[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -309,6 +731,62 @@ func (m *QueryParamsResponse) Size() (n int) {
 	_ = l
 	l = m.Params.Size()
 	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryGetWordleRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetWordleResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.Wordle.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllWordleRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllWordleResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Wordle) > 0 {
+		for _, e := range m.Wordle {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
 	return n
 }
 
@@ -427,6 +905,377 @@ func (m *QueryParamsResponse) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			if err := m.Params.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetWordleRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetWordleRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetWordleRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetWordleResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetWordleResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetWordleResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Wordle", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.Wordle.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllWordleRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllWordleRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllWordleRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllWordleResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllWordleResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllWordleResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Wordle", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Wordle = append(m.Wordle, Wordle{})
+			if err := m.Wordle[len(m.Wordle)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
