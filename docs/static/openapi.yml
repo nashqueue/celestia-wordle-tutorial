@@ -51927,6 +51927,8 @@ definitions:
     title: >-
       SignatureCounts contains information about signature reporting for a
       number of blocks
+  yazzyyaz.wordle.wordle.MsgSubmitGuessResponse:
+    type: object
   yazzyyaz.wordle.wordle.MsgSubmitWordleResponse:
     type: object
   yazzyyaz.wordle.wordle.Params:

@@ -28,6 +28,10 @@ const (
 	// TODO: Determine the simulation weight value
 	defaultWeightMsgSubmitWordle int = 100
 
+	opWeightMsgSubmitGuess = "op_weight_msg_submit_guess"
+	// TODO: Determine the simulation weight value
+	defaultWeightMsgSubmitGuess int = 100
+
 	// this line is used by starport scaffolding # simapp/module/const
 )
 
@@ -71,6 +75,17 @@ func (am AppModule) WeightedOperations(simState module.SimulationState) []simtyp
 	operations = append(operations, simulation.NewWeightedOperation(
 		weightMsgSubmitWordle,
 		wordlesimulation.SimulateMsgSubmitWordle(am.accountKeeper, am.bankKeeper, am.keeper),
+	))
+
+	var weightMsgSubmitGuess int
+	simState.AppParams.GetOrGenerate(simState.Cdc, opWeightMsgSubmitGuess, &weightMsgSubmitGuess, nil,
+		func(_ *rand.Rand) {
+			weightMsgSubmitGuess = defaultWeightMsgSubmitGuess
+		},
+	)
+	operations = append(operations, simulation.NewWeightedOperation(
+		weightMsgSubmitGuess,
+		wordlesimulation.SimulateMsgSubmitGuess(am.accountKeeper, am.bankKeeper, am.keeper),
 	))
 
 	// this line is used by starport scaffolding # simapp/module/operation

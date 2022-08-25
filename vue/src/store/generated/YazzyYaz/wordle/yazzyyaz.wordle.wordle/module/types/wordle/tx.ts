@@ -10,6 +10,13 @@ export interface MsgSubmitWordle {
 
 export interface MsgSubmitWordleResponse {}
 
+export interface MsgSubmitGuess {
+  creator: string;
+  word: string;
+}
+
+export interface MsgSubmitGuessResponse {}
+
 const baseMsgSubmitWordle: object = { creator: "", word: "" };
 
 export const MsgSubmitWordle = {
@@ -128,10 +135,121 @@ export const MsgSubmitWordleResponse = {
   },
 };
 
+const baseMsgSubmitGuess: object = { creator: "", word: "" };
+
+export const MsgSubmitGuess = {
+  encode(message: MsgSubmitGuess, writer: Writer = Writer.create()): Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.word !== "") {
+      writer.uint32(18).string(message.word);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgSubmitGuess {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgSubmitGuess } as MsgSubmitGuess;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.word = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): MsgSubmitGuess {
+    const message = { ...baseMsgSubmitGuess } as MsgSubmitGuess;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = String(object.creator);
+    } else {
+      message.creator = "";
+    }
+    if (object.word !== undefined && object.word !== null) {
+      message.word = String(object.word);
+    } else {
+      message.word = "";
+    }
+    return message;
+  },
+
+  toJSON(message: MsgSubmitGuess): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.word !== undefined && (obj.word = message.word);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<MsgSubmitGuess>): MsgSubmitGuess {
+    const message = { ...baseMsgSubmitGuess } as MsgSubmitGuess;
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    } else {
+      message.creator = "";
+    }
+    if (object.word !== undefined && object.word !== null) {
+      message.word = object.word;
+    } else {
+      message.word = "";
+    }
+    return message;
+  },
+};
+
+const baseMsgSubmitGuessResponse: object = {};
+
+export const MsgSubmitGuessResponse = {
+  encode(_: MsgSubmitGuessResponse, writer: Writer = Writer.create()): Writer {
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): MsgSubmitGuessResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseMsgSubmitGuessResponse } as MsgSubmitGuessResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(_: any): MsgSubmitGuessResponse {
+    const message = { ...baseMsgSubmitGuessResponse } as MsgSubmitGuessResponse;
+    return message;
+  },
+
+  toJSON(_: MsgSubmitGuessResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: DeepPartial<MsgSubmitGuessResponse>): MsgSubmitGuessResponse {
+    const message = { ...baseMsgSubmitGuessResponse } as MsgSubmitGuessResponse;
+    return message;
+  },
+};
+
 /** Msg defines the Msg service. */
 export interface Msg {
-  /** this line is used by starport scaffolding # proto/tx/rpc */
   SubmitWordle(request: MsgSubmitWordle): Promise<MsgSubmitWordleResponse>;
+  /** this line is used by starport scaffolding # proto/tx/rpc */
+  SubmitGuess(request: MsgSubmitGuess): Promise<MsgSubmitGuessResponse>;
 }
 
 export class MsgClientImpl implements Msg {
@@ -148,6 +266,18 @@ export class MsgClientImpl implements Msg {
     );
     return promise.then((data) =>
       MsgSubmitWordleResponse.decode(new Reader(data))
+    );
+  }
+
+  SubmitGuess(request: MsgSubmitGuess): Promise<MsgSubmitGuessResponse> {
+    const data = MsgSubmitGuess.encode(request).finish();
+    const promise = this.rpc.request(
+      "yazzyyaz.wordle.wordle.Msg",
+      "SubmitGuess",
+      data
+    );
+    return promise.then((data) =>
+      MsgSubmitGuessResponse.decode(new Reader(data))
     );
   }
 }

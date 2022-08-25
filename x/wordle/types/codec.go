@@ -9,12 +9,16 @@ import (
 
 func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterConcrete(&MsgSubmitWordle{}, "wordle/SubmitWordle", nil)
+	cdc.RegisterConcrete(&MsgSubmitGuess{}, "wordle/SubmitGuess", nil)
 	// this line is used by starport scaffolding # 2
 }
 
 func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgSubmitWordle{},
+	)
+	registry.RegisterImplementations((*sdk.Msg)(nil),
+		&MsgSubmitGuess{},
 	)
 	// this line is used by starport scaffolding # 3
 
