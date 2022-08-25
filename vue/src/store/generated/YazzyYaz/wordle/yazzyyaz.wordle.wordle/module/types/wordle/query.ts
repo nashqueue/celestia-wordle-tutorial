@@ -6,6 +6,7 @@ import {
   PageRequest,
   PageResponse,
 } from "../cosmos/base/query/v1beta1/pagination";
+import { Guess } from "../wordle/guess";
 
 export const protobufPackage = "yazzyyaz.wordle.wordle";
 
@@ -32,6 +33,23 @@ export interface QueryAllWordleRequest {
 
 export interface QueryAllWordleResponse {
   wordle: Wordle[];
+  pagination: PageResponse | undefined;
+}
+
+export interface QueryGetGuessRequest {
+  index: string;
+}
+
+export interface QueryGetGuessResponse {
+  guess: Guess | undefined;
+}
+
+export interface QueryAllGuessRequest {
+  pagination: PageRequest | undefined;
+}
+
+export interface QueryAllGuessResponse {
+  guess: Guess[];
   pagination: PageResponse | undefined;
 }
 
@@ -408,6 +426,276 @@ export const QueryAllWordleResponse = {
   },
 };
 
+const baseQueryGetGuessRequest: object = { index: "" };
+
+export const QueryGetGuessRequest = {
+  encode(
+    message: QueryGetGuessRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.index !== "") {
+      writer.uint32(10).string(message.index);
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): QueryGetGuessRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseQueryGetGuessRequest } as QueryGetGuessRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.index = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetGuessRequest {
+    const message = { ...baseQueryGetGuessRequest } as QueryGetGuessRequest;
+    if (object.index !== undefined && object.index !== null) {
+      message.index = String(object.index);
+    } else {
+      message.index = "";
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetGuessRequest): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = message.index);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<QueryGetGuessRequest>): QueryGetGuessRequest {
+    const message = { ...baseQueryGetGuessRequest } as QueryGetGuessRequest;
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    } else {
+      message.index = "";
+    }
+    return message;
+  },
+};
+
+const baseQueryGetGuessResponse: object = {};
+
+export const QueryGetGuessResponse = {
+  encode(
+    message: QueryGetGuessResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.guess !== undefined) {
+      Guess.encode(message.guess, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): QueryGetGuessResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseQueryGetGuessResponse } as QueryGetGuessResponse;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.guess = Guess.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryGetGuessResponse {
+    const message = { ...baseQueryGetGuessResponse } as QueryGetGuessResponse;
+    if (object.guess !== undefined && object.guess !== null) {
+      message.guess = Guess.fromJSON(object.guess);
+    } else {
+      message.guess = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryGetGuessResponse): unknown {
+    const obj: any = {};
+    message.guess !== undefined &&
+      (obj.guess = message.guess ? Guess.toJSON(message.guess) : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryGetGuessResponse>
+  ): QueryGetGuessResponse {
+    const message = { ...baseQueryGetGuessResponse } as QueryGetGuessResponse;
+    if (object.guess !== undefined && object.guess !== null) {
+      message.guess = Guess.fromPartial(object.guess);
+    } else {
+      message.guess = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllGuessRequest: object = {};
+
+export const QueryAllGuessRequest = {
+  encode(
+    message: QueryAllGuessRequest,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): QueryAllGuessRequest {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseQueryAllGuessRequest } as QueryAllGuessRequest;
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllGuessRequest {
+    const message = { ...baseQueryAllGuessRequest } as QueryAllGuessRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllGuessRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageRequest.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(object: DeepPartial<QueryAllGuessRequest>): QueryAllGuessRequest {
+    const message = { ...baseQueryAllGuessRequest } as QueryAllGuessRequest;
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
+const baseQueryAllGuessResponse: object = {};
+
+export const QueryAllGuessResponse = {
+  encode(
+    message: QueryAllGuessResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    for (const v of message.guess) {
+      Guess.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(
+        message.pagination,
+        writer.uint32(18).fork()
+      ).ldelim();
+    }
+    return writer;
+  },
+
+  decode(input: Reader | Uint8Array, length?: number): QueryAllGuessResponse {
+    const reader = input instanceof Uint8Array ? new Reader(input) : input;
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = { ...baseQueryAllGuessResponse } as QueryAllGuessResponse;
+    message.guess = [];
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.guess.push(Guess.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+
+  fromJSON(object: any): QueryAllGuessResponse {
+    const message = { ...baseQueryAllGuessResponse } as QueryAllGuessResponse;
+    message.guess = [];
+    if (object.guess !== undefined && object.guess !== null) {
+      for (const e of object.guess) {
+        message.guess.push(Guess.fromJSON(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromJSON(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+
+  toJSON(message: QueryAllGuessResponse): unknown {
+    const obj: any = {};
+    if (message.guess) {
+      obj.guess = message.guess.map((e) => (e ? Guess.toJSON(e) : undefined));
+    } else {
+      obj.guess = [];
+    }
+    message.pagination !== undefined &&
+      (obj.pagination = message.pagination
+        ? PageResponse.toJSON(message.pagination)
+        : undefined);
+    return obj;
+  },
+
+  fromPartial(
+    object: DeepPartial<QueryAllGuessResponse>
+  ): QueryAllGuessResponse {
+    const message = { ...baseQueryAllGuessResponse } as QueryAllGuessResponse;
+    message.guess = [];
+    if (object.guess !== undefined && object.guess !== null) {
+      for (const e of object.guess) {
+        message.guess.push(Guess.fromPartial(e));
+      }
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromPartial(object.pagination);
+    } else {
+      message.pagination = undefined;
+    }
+    return message;
+  },
+};
+
 /** Query defines the gRPC querier service. */
 export interface Query {
   /** Parameters queries the parameters of the module. */
@@ -416,6 +704,10 @@ export interface Query {
   Wordle(request: QueryGetWordleRequest): Promise<QueryGetWordleResponse>;
   /** Queries a list of Wordle items. */
   WordleAll(request: QueryAllWordleRequest): Promise<QueryAllWordleResponse>;
+  /** Queries a Guess by index. */
+  Guess(request: QueryGetGuessRequest): Promise<QueryGetGuessResponse>;
+  /** Queries a list of Guess items. */
+  GuessAll(request: QueryAllGuessRequest): Promise<QueryAllGuessResponse>;
 }
 
 export class QueryClientImpl implements Query {
@@ -454,6 +746,30 @@ export class QueryClientImpl implements Query {
     );
     return promise.then((data) =>
       QueryAllWordleResponse.decode(new Reader(data))
+    );
+  }
+
+  Guess(request: QueryGetGuessRequest): Promise<QueryGetGuessResponse> {
+    const data = QueryGetGuessRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "yazzyyaz.wordle.wordle.Query",
+      "Guess",
+      data
+    );
+    return promise.then((data) =>
+      QueryGetGuessResponse.decode(new Reader(data))
+    );
+  }
+
+  GuessAll(request: QueryAllGuessRequest): Promise<QueryAllGuessResponse> {
+    const data = QueryAllGuessRequest.encode(request).finish();
+    const promise = this.rpc.request(
+      "yazzyyaz.wordle.wordle.Query",
+      "GuessAll",
+      data
+    );
+    return promise.then((data) =>
+      QueryAllGuessResponse.decode(new Reader(data))
     );
   }
 }

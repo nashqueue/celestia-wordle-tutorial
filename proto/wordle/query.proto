@@ -6,6 +6,7 @@ import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "wordle/params.proto";
 import "wordle/wordle.proto";
+import "wordle/guess.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/YazzyYaz/wordle/x/wordle/types";
@@ -24,6 +25,16 @@ service Query {
 	// Queries a list of Wordle items.
 	rpc WordleAll(QueryAllWordleRequest) returns (QueryAllWordleResponse) {
 		option (google.api.http).get = "/YazzyYaz/wordle/wordle/wordle";
+	}
+
+// Queries a Guess by index.
+	rpc Guess(QueryGetGuessRequest) returns (QueryGetGuessResponse) {
+		option (google.api.http).get = "/YazzyYaz/wordle/wordle/guess/{index}";
+	}
+
+	// Queries a list of Guess items.
+	rpc GuessAll(QueryAllGuessRequest) returns (QueryAllGuessResponse) {
+		option (google.api.http).get = "/YazzyYaz/wordle/wordle/guess";
 	}
 
 // this line is used by starport scaffolding # 2
@@ -53,6 +64,24 @@ message QueryAllWordleRequest {
 
 message QueryAllWordleResponse {
 	repeated Wordle wordle = 1 [(gogoproto.nullable) = false];
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+
+message QueryGetGuessRequest {
+	  string index = 1;
+
+}
+
+message QueryGetGuessResponse {
+	Guess guess = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllGuessRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllGuessResponse {
+	repeated Guess guess = 1 [(gogoproto.nullable) = false];
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 

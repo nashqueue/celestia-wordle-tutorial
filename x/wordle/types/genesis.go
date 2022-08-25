@@ -11,6 +11,7 @@ const DefaultIndex uint64 = 1
 func DefaultGenesis() *GenesisState {
 	return &GenesisState{
 		WordleList: []Wordle{},
+		GuessList:  []Guess{},
 		// this line is used by starport scaffolding # genesis/types/default
 		Params: DefaultParams(),
 	}
@@ -28,6 +29,16 @@ func (gs GenesisState) Validate() error {
 			return fmt.Errorf("duplicated index for wordle")
 		}
 		wordleIndexMap[index] = struct{}{}
+	}
+	// Check for duplicated index in guess
+	guessIndexMap := make(map[string]struct{})
+
+	for _, elem := range gs.GuessList {
+		index := string(GuessKey(elem.Index))
+		if _, ok := guessIndexMap[index]; ok {
+			return fmt.Errorf("duplicated index for guess")
+		}
+		guessIndexMap[index] = struct{}{}
 	}
 	// this line is used by starport scaffolding # genesis/types/validate
 

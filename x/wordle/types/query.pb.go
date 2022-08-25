@@ -297,6 +297,190 @@ func (m *QueryAllWordleResponse) GetPagination() *query.PageResponse {
 	return nil
 }
 
+type QueryGetGuessRequest struct {
+	Index string `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
+}
+
+func (m *QueryGetGuessRequest) Reset()         { *m = QueryGetGuessRequest{} }
+func (m *QueryGetGuessRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetGuessRequest) ProtoMessage()    {}
+func (*QueryGetGuessRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ec721809ef421566, []int{6}
+}
+func (m *QueryGetGuessRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetGuessRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetGuessRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetGuessRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetGuessRequest.Merge(m, src)
+}
+func (m *QueryGetGuessRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetGuessRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetGuessRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetGuessRequest proto.InternalMessageInfo
+
+func (m *QueryGetGuessRequest) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+type QueryGetGuessResponse struct {
+	Guess Guess `protobuf:"bytes,1,opt,name=guess,proto3" json:"guess"`
+}
+
+func (m *QueryGetGuessResponse) Reset()         { *m = QueryGetGuessResponse{} }
+func (m *QueryGetGuessResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetGuessResponse) ProtoMessage()    {}
+func (*QueryGetGuessResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ec721809ef421566, []int{7}
+}
+func (m *QueryGetGuessResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetGuessResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetGuessResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetGuessResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetGuessResponse.Merge(m, src)
+}
+func (m *QueryGetGuessResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetGuessResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetGuessResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetGuessResponse proto.InternalMessageInfo
+
+func (m *QueryGetGuessResponse) GetGuess() Guess {
+	if m != nil {
+		return m.Guess
+	}
+	return Guess{}
+}
+
+type QueryAllGuessRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllGuessRequest) Reset()         { *m = QueryAllGuessRequest{} }
+func (m *QueryAllGuessRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllGuessRequest) ProtoMessage()    {}
+func (*QueryAllGuessRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ec721809ef421566, []int{8}
+}
+func (m *QueryAllGuessRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllGuessRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllGuessRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllGuessRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllGuessRequest.Merge(m, src)
+}
+func (m *QueryAllGuessRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllGuessRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllGuessRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllGuessRequest proto.InternalMessageInfo
+
+func (m *QueryAllGuessRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllGuessResponse struct {
+	Guess      []Guess             `protobuf:"bytes,1,rep,name=guess,proto3" json:"guess"`
+	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllGuessResponse) Reset()         { *m = QueryAllGuessResponse{} }
+func (m *QueryAllGuessResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllGuessResponse) ProtoMessage()    {}
+func (*QueryAllGuessResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ec721809ef421566, []int{9}
+}
+func (m *QueryAllGuessResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllGuessResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllGuessResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllGuessResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllGuessResponse.Merge(m, src)
+}
+func (m *QueryAllGuessResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllGuessResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllGuessResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllGuessResponse proto.InternalMessageInfo
+
+func (m *QueryAllGuessResponse) GetGuess() []Guess {
+	if m != nil {
+		return m.Guess
+	}
+	return nil
+}
+
+func (m *QueryAllGuessResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "yazzyyaz.wordle.wordle.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "yazzyyaz.wordle.wordle.QueryParamsResponse")
@@ -304,42 +488,54 @@ func init() {
 	proto.RegisterType((*QueryGetWordleResponse)(nil), "yazzyyaz.wordle.wordle.QueryGetWordleResponse")
 	proto.RegisterType((*QueryAllWordleRequest)(nil), "yazzyyaz.wordle.wordle.QueryAllWordleRequest")
 	proto.RegisterType((*QueryAllWordleResponse)(nil), "yazzyyaz.wordle.wordle.QueryAllWordleResponse")
+	proto.RegisterType((*QueryGetGuessRequest)(nil), "yazzyyaz.wordle.wordle.QueryGetGuessRequest")
+	proto.RegisterType((*QueryGetGuessResponse)(nil), "yazzyyaz.wordle.wordle.QueryGetGuessResponse")
+	proto.RegisterType((*QueryAllGuessRequest)(nil), "yazzyyaz.wordle.wordle.QueryAllGuessRequest")
+	proto.RegisterType((*QueryAllGuessResponse)(nil), "yazzyyaz.wordle.wordle.QueryAllGuessResponse")
 }
 
 func init() { proto.RegisterFile("wordle/query.proto", fileDescriptor_ec721809ef421566) }
 
 var fileDescriptor_ec721809ef421566 = []byte{
-	// 477 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x94, 0x94, 0x31, 0x6f, 0xd4, 0x30,
-	0x14, 0xc7, 0xcf, 0x2d, 0x8d, 0x54, 0xb3, 0xb9, 0x47, 0x85, 0x22, 0x64, 0xaa, 0x0c, 0x47, 0x29,
-	0xaa, 0xad, 0x96, 0x95, 0xa5, 0x45, 0xa2, 0x6b, 0x09, 0x12, 0xa8, 0x2c, 0xc8, 0x69, 0xad, 0x10,
-	0x29, 0x17, 0xa7, 0xb1, 0x0f, 0x9a, 0x20, 0x16, 0x36, 0x36, 0x04, 0x03, 0x23, 0xdf, 0x85, 0xa9,
-	0x63, 0x25, 0x16, 0x26, 0x84, 0xee, 0xf8, 0x20, 0x28, 0x7e, 0x3e, 0xf5, 0x92, 0x6b, 0xc9, 0x31,
-	0xd9, 0x79, 0xfe, 0xbf, 0xff, 0xfb, 0xf9, 0xf9, 0x29, 0x98, 0xbc, 0x55, 0xc5, 0x49, 0x2a, 0xf9,
-	0xe9, 0x48, 0x16, 0x25, 0xcb, 0x0b, 0x65, 0x14, 0x59, 0x2f, 0x45, 0x55, 0x95, 0xa5, 0xa8, 0x18,
-	0x1c, 0xba, 0xc5, 0xef, 0xc7, 0x2a, 0x56, 0x56, 0xc2, 0xeb, 0x1d, 0xa8, 0xfd, 0x3b, 0xb1, 0x52,
-	0x71, 0x2a, 0xb9, 0xc8, 0x13, 0x2e, 0xb2, 0x4c, 0x19, 0x61, 0x12, 0x95, 0x69, 0x77, 0xba, 0x75,
-	0xac, 0xf4, 0x50, 0x69, 0x1e, 0x09, 0xed, 0x8a, 0xf0, 0x37, 0x3b, 0x91, 0x34, 0x62, 0x87, 0xe7,
-	0x22, 0x4e, 0x32, 0x2b, 0x76, 0xda, 0x35, 0xc7, 0x92, 0x8b, 0x42, 0x0c, 0x75, 0x2b, 0xe8, 0x50,
-	0x6c, 0x30, 0xe8, 0x63, 0xf2, 0xb4, 0xf6, 0x3a, 0xb4, 0xca, 0x50, 0x9e, 0x8e, 0xa4, 0x36, 0xc1,
-	0x33, 0xbc, 0xd6, 0x88, 0xea, 0x5c, 0x65, 0x5a, 0x92, 0x47, 0xd8, 0x03, 0xc7, 0xdb, 0x68, 0x03,
-	0x6d, 0xde, 0xdc, 0xa5, 0xec, 0xea, 0xfb, 0x31, 0xc8, 0xdb, 0xbf, 0x71, 0xfe, 0xeb, 0x6e, 0x2f,
-	0x74, 0x39, 0xc1, 0x36, 0xbe, 0x65, 0x4d, 0x0f, 0xa4, 0x79, 0x61, 0x65, 0xae, 0x1a, 0xe9, 0xe3,
-	0x95, 0x24, 0x3b, 0x91, 0x67, 0xd6, 0x75, 0x35, 0x84, 0x8f, 0xe0, 0x39, 0x5e, 0x6f, 0xcb, 0x2f,
-	0x31, 0xa0, 0x4e, 0x17, 0x06, 0xe4, 0x4d, 0x31, 0x20, 0x18, 0xbc, 0x72, 0x18, 0x7b, 0x69, 0xda,
-	0xc4, 0x78, 0x82, 0xf1, 0x65, 0x23, 0x9d, 0xf5, 0x80, 0x41, 0xd7, 0x59, 0xdd, 0x75, 0x06, 0x4f,
-	0xeb, 0xba, 0xce, 0x0e, 0x45, 0x3c, 0xcd, 0x0d, 0x67, 0x32, 0x83, 0x6f, 0xc8, 0x91, 0xcf, 0x54,
-	0xb8, 0x82, 0x7c, 0xf9, 0x7f, 0xc9, 0xc9, 0x41, 0x03, 0x70, 0xc9, 0x02, 0xde, 0xeb, 0x04, 0x84,
-	0xd2, 0xb3, 0x84, 0xbb, 0xdf, 0x97, 0xf1, 0x8a, 0x25, 0x24, 0x1f, 0x11, 0xf6, 0xe0, 0xb1, 0xc8,
-	0xd6, 0x75, 0x2c, 0xf3, 0xf3, 0xe1, 0x3f, 0x58, 0x48, 0x0b, 0x95, 0x83, 0xc1, 0x87, 0x1f, 0x7f,
-	0xbe, 0x2c, 0x6d, 0x10, 0xca, 0x8f, 0xea, 0xa4, 0x23, 0x51, 0xf1, 0xc6, 0x24, 0xba, 0x29, 0x25,
-	0x5f, 0x11, 0xf6, 0xe0, 0xde, 0x64, 0xfb, 0x9f, 0xfe, 0xed, 0x01, 0xf2, 0xd9, 0xa2, 0x72, 0x47,
-	0xc4, 0x2c, 0xd1, 0x26, 0x19, 0x5c, 0x47, 0xe4, 0x96, 0x77, 0x76, 0x12, 0xdf, 0x93, 0xcf, 0x08,
-	0xaf, 0x82, 0xc5, 0x5e, 0x9a, 0x76, 0xc0, 0xb5, 0xc7, 0xaa, 0x03, 0x6e, 0x6e, 0x46, 0xba, 0xdb,
-	0x05, 0xcb, 0xfe, 0xe3, 0xf3, 0x31, 0x45, 0x17, 0x63, 0x8a, 0x7e, 0x8f, 0x29, 0xfa, 0x34, 0xa1,
-	0xbd, 0x8b, 0x09, 0xed, 0xfd, 0x9c, 0xd0, 0xde, 0xcb, 0xfb, 0x71, 0x62, 0x5e, 0x8f, 0x22, 0x76,
-	0xac, 0x86, 0x73, 0x1e, 0x67, 0xd3, 0x8d, 0x29, 0x73, 0xa9, 0x23, 0xcf, 0xfe, 0x05, 0x1e, 0xfe,
-	0x0d, 0x00, 0x00, 0xff, 0xff, 0xd0, 0xfb, 0x4d, 0x0f, 0xbd, 0x04, 0x00, 0x00,
+	// 601 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x95, 0x3f, 0x6f, 0xd3, 0x4e,
+	0x18, 0xc7, 0x73, 0xed, 0x2f, 0xd1, 0xaf, 0xc7, 0x76, 0x0d, 0x15, 0x8a, 0xa8, 0x5b, 0x59, 0x6a,
+	0x5a, 0x4a, 0x72, 0x56, 0xcb, 0x84, 0xc4, 0x92, 0x22, 0x91, 0xb5, 0x18, 0x09, 0x54, 0x06, 0xd0,
+	0xa5, 0x3d, 0x19, 0x4b, 0x8e, 0xcf, 0xcd, 0x39, 0x50, 0x07, 0xb1, 0xb0, 0xb1, 0x20, 0x44, 0x07,
+	0x06, 0x06, 0xde, 0x4e, 0xc7, 0x4a, 0x2c, 0x4c, 0x08, 0x25, 0x2c, 0xbc, 0x0b, 0xe4, 0xbb, 0xc7,
+	0x24, 0x76, 0xea, 0x38, 0x91, 0x3a, 0xd9, 0x39, 0x7f, 0x9f, 0xe7, 0xf9, 0x3c, 0xff, 0x2e, 0x98,
+	0xbc, 0x11, 0xbd, 0x13, 0x8f, 0x5b, 0xa7, 0x7d, 0xde, 0x8b, 0x68, 0xd0, 0x13, 0xa1, 0x20, 0x6b,
+	0x11, 0x1b, 0x0c, 0xa2, 0x88, 0x0d, 0xa8, 0xfe, 0x08, 0x8f, 0x5a, 0xd5, 0x11, 0x8e, 0x50, 0x12,
+	0x2b, 0x7e, 0xd3, 0xea, 0xda, 0x6d, 0x47, 0x08, 0xc7, 0xe3, 0x16, 0x0b, 0x5c, 0x8b, 0xf9, 0xbe,
+	0x08, 0x59, 0xe8, 0x0a, 0x5f, 0xc2, 0xd7, 0xdd, 0x63, 0x21, 0xbb, 0x42, 0x5a, 0x1d, 0x26, 0x21,
+	0x88, 0xf5, 0x7a, 0xaf, 0xc3, 0x43, 0xb6, 0x67, 0x05, 0xcc, 0x71, 0x7d, 0x25, 0x06, 0xed, 0x2a,
+	0xb0, 0x04, 0xac, 0xc7, 0xba, 0x32, 0x73, 0x08, 0x28, 0xfa, 0x30, 0xa1, 0x76, 0xfa, 0x5c, 0x82,
+	0xd0, 0xac, 0x62, 0xf2, 0x38, 0xf6, 0x7f, 0xa8, 0xac, 0x6d, 0x7e, 0xda, 0xe7, 0x32, 0x34, 0x9f,
+	0xe0, 0xd5, 0xd4, 0xa9, 0x0c, 0x84, 0x2f, 0x39, 0x79, 0x80, 0x2b, 0x3a, 0xca, 0x2d, 0xb4, 0x89,
+	0x76, 0x6e, 0xec, 0x1b, 0xf4, 0xea, 0x9c, 0xa9, 0xb6, 0x3b, 0xf8, 0xef, 0xe2, 0xe7, 0x46, 0xc9,
+	0x06, 0x1b, 0xb3, 0x89, 0x6f, 0x2a, 0xa7, 0x6d, 0x1e, 0x3e, 0x53, 0x32, 0x88, 0x46, 0xaa, 0xb8,
+	0xec, 0xfa, 0x27, 0xfc, 0x4c, 0x79, 0x5d, 0xb1, 0xf5, 0x0f, 0xf3, 0x29, 0x5e, 0xcb, 0xca, 0xc7,
+	0x18, 0x3a, 0x4e, 0x11, 0x86, 0xb6, 0x4b, 0x30, 0xf4, 0xa1, 0xf9, 0x12, 0x30, 0x5a, 0x9e, 0x97,
+	0xc6, 0x78, 0x84, 0xf1, 0xb8, 0xb8, 0xe0, 0xba, 0x4e, 0x75, 0x27, 0x68, 0xdc, 0x09, 0xaa, 0xdb,
+	0x0d, 0x9d, 0xa0, 0x87, 0xcc, 0x49, 0x6c, 0xed, 0x09, 0x4b, 0xf3, 0x1b, 0x02, 0xf2, 0x89, 0x08,
+	0x57, 0x90, 0x2f, 0x2f, 0x4a, 0x4e, 0xda, 0x29, 0xc0, 0x25, 0x05, 0xb8, 0x5d, 0x08, 0xa8, 0x43,
+	0xa7, 0x08, 0x1b, 0xb8, 0x9a, 0x94, 0xb6, 0x1d, 0xcf, 0xc2, 0xec, 0x46, 0xd8, 0xe3, 0xbe, 0x81,
+	0x1a, 0xb2, 0xb9, 0x8f, 0xcb, 0x6a, 0x94, 0xa0, 0x56, 0xeb, 0x79, 0xc9, 0x28, 0x2b, 0xc8, 0x45,
+	0x5b, 0x98, 0x2f, 0x80, 0xa0, 0xe5, 0x79, 0x29, 0x82, 0xeb, 0xea, 0xc1, 0x57, 0x34, 0xee, 0x72,
+	0x2e, 0xf4, 0xf2, 0x62, 0xd0, 0xd7, 0x56, 0xff, 0xfd, 0x3f, 0x65, 0x5c, 0x56, 0x74, 0xe4, 0x03,
+	0xc2, 0x15, 0xbd, 0x2c, 0x64, 0x37, 0x8f, 0x64, 0x7a, 0x3f, 0x6b, 0x77, 0xe7, 0xd2, 0xea, 0xc8,
+	0x66, 0xfd, 0xfd, 0xf7, 0xdf, 0xe7, 0x4b, 0x9b, 0xc4, 0xb0, 0x8e, 0x62, 0xa3, 0x23, 0x36, 0xb0,
+	0x52, 0xb7, 0x03, 0xdc, 0x1c, 0xe4, 0x0b, 0xc2, 0x15, 0x3d, 0x77, 0xa4, 0x39, 0xd3, 0x7f, 0x76,
+	0x81, 0x6b, 0x74, 0x5e, 0x39, 0x10, 0x51, 0x45, 0xb4, 0x43, 0xea, 0x79, 0x44, 0xf0, 0x78, 0xab,
+	0x06, 0xf0, 0x1d, 0xf9, 0x8c, 0xf0, 0x8a, 0x76, 0xd1, 0xf2, 0xbc, 0x02, 0xb8, 0xec, 0x5a, 0x17,
+	0xc0, 0x4d, 0xed, 0x68, 0x71, 0xb9, 0x60, 0x1b, 0xcf, 0x11, 0x2e, 0xab, 0x21, 0x21, 0x8d, 0xa2,
+	0xf4, 0x27, 0x47, 0xbc, 0xd6, 0x9c, 0x53, 0x0d, 0x38, 0x4d, 0x85, 0xb3, 0x4d, 0xb6, 0xf2, 0x70,
+	0xd4, 0x6c, 0xfe, 0x2b, 0xd5, 0x47, 0x84, 0xff, 0x57, 0x0e, 0xe2, 0x4a, 0x35, 0x8a, 0x52, 0x5f,
+	0x00, 0x2c, 0xbb, 0x48, 0xe6, 0x96, 0x02, 0xdb, 0x20, 0xeb, 0x33, 0xc1, 0x0e, 0x1e, 0x5e, 0x0c,
+	0x0d, 0x74, 0x39, 0x34, 0xd0, 0xaf, 0xa1, 0x81, 0x3e, 0x8d, 0x8c, 0xd2, 0xe5, 0xc8, 0x28, 0xfd,
+	0x18, 0x19, 0xa5, 0xe7, 0x77, 0x1c, 0x37, 0x7c, 0xd5, 0xef, 0xd0, 0x63, 0xd1, 0x9d, 0x72, 0x71,
+	0x96, 0xbc, 0x84, 0x51, 0xc0, 0x65, 0xa7, 0xa2, 0xfe, 0xac, 0xee, 0xfd, 0x0d, 0x00, 0x00, 0xff,
+	0xff, 0x22, 0x39, 0xe0, 0x14, 0x78, 0x07, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -360,6 +556,10 @@ type QueryClient interface {
 	Wordle(ctx context.Context, in *QueryGetWordleRequest, opts ...grpc.CallOption) (*QueryGetWordleResponse, error)
 	// Queries a list of Wordle items.
 	WordleAll(ctx context.Context, in *QueryAllWordleRequest, opts ...grpc.CallOption) (*QueryAllWordleResponse, error)
+	// Queries a Guess by index.
+	Guess(ctx context.Context, in *QueryGetGuessRequest, opts ...grpc.CallOption) (*QueryGetGuessResponse, error)
+	// Queries a list of Guess items.
+	GuessAll(ctx context.Context, in *QueryAllGuessRequest, opts ...grpc.CallOption) (*QueryAllGuessResponse, error)
 }
 
 type queryClient struct {
@@ -397,6 +597,24 @@ func (c *queryClient) WordleAll(ctx context.Context, in *QueryAllWordleRequest, 
 	return out, nil
 }
 
+func (c *queryClient) Guess(ctx context.Context, in *QueryGetGuessRequest, opts ...grpc.CallOption) (*QueryGetGuessResponse, error) {
+	out := new(QueryGetGuessResponse)
+	err := c.cc.Invoke(ctx, "/yazzyyaz.wordle.wordle.Query/Guess", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) GuessAll(ctx context.Context, in *QueryAllGuessRequest, opts ...grpc.CallOption) (*QueryAllGuessResponse, error) {
+	out := new(QueryAllGuessResponse)
+	err := c.cc.Invoke(ctx, "/yazzyyaz.wordle.wordle.Query/GuessAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
@@ -405,6 +623,10 @@ type QueryServer interface {
 	Wordle(context.Context, *QueryGetWordleRequest) (*QueryGetWordleResponse, error)
 	// Queries a list of Wordle items.
 	WordleAll(context.Context, *QueryAllWordleRequest) (*QueryAllWordleResponse, error)
+	// Queries a Guess by index.
+	Guess(context.Context, *QueryGetGuessRequest) (*QueryGetGuessResponse, error)
+	// Queries a list of Guess items.
+	GuessAll(context.Context, *QueryAllGuessRequest) (*QueryAllGuessResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -419,6 +641,12 @@ func (*UnimplementedQueryServer) Wordle(ctx context.Context, req *QueryGetWordle
 }
 func (*UnimplementedQueryServer) WordleAll(ctx context.Context, req *QueryAllWordleRequest) (*QueryAllWordleResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method WordleAll not implemented")
+}
+func (*UnimplementedQueryServer) Guess(ctx context.Context, req *QueryGetGuessRequest) (*QueryGetGuessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Guess not implemented")
+}
+func (*UnimplementedQueryServer) GuessAll(ctx context.Context, req *QueryAllGuessRequest) (*QueryAllGuessResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GuessAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -479,6 +707,42 @@ func _Query_WordleAll_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_Guess_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetGuessRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Guess(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/yazzyyaz.wordle.wordle.Query/Guess",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Guess(ctx, req.(*QueryGetGuessRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_GuessAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllGuessRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).GuessAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/yazzyyaz.wordle.wordle.Query/GuessAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).GuessAll(ctx, req.(*QueryAllGuessRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "yazzyyaz.wordle.wordle.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -494,6 +758,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "WordleAll",
 			Handler:    _Query_WordleAll_Handler,
+		},
+		{
+			MethodName: "Guess",
+			Handler:    _Query_Guess_Handler,
+		},
+		{
+			MethodName: "GuessAll",
+			Handler:    _Query_GuessAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -703,6 +975,153 @@ func (m *QueryAllWordleResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) 
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetGuessRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetGuessRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetGuessRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetGuessResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetGuessResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetGuessResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.Guess.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllGuessRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllGuessRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllGuessRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllGuessResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllGuessResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllGuessResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Guess) > 0 {
+		for iNdEx := len(m.Guess) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Guess[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -779,6 +1198,62 @@ func (m *QueryAllWordleResponse) Size() (n int) {
 	_ = l
 	if len(m.Wordle) > 0 {
 		for _, e := range m.Wordle {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetGuessRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetGuessResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.Guess.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllGuessRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllGuessResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Guess) > 0 {
+		for _, e := range m.Guess {
 			l = e.Size()
 			n += 1 + l + sovQuery(uint64(l))
 		}
@@ -1240,6 +1715,377 @@ func (m *QueryAllWordleResponse) Unmarshal(dAtA []byte) error {
 			}
 			m.Wordle = append(m.Wordle, Wordle{})
 			if err := m.Wordle[len(m.Wordle)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetGuessRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetGuessRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetGuessRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetGuessResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetGuessResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetGuessResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Guess", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.Guess.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllGuessRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllGuessRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllGuessRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllGuessResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllGuessResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllGuessResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Guess", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Guess = append(m.Guess, Guess{})
+			if err := m.Guess[len(m.Guess)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex

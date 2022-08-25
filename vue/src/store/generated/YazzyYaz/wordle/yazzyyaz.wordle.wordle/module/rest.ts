@@ -83,6 +83,13 @@ export interface V1Beta1PageResponse {
   total?: string;
 }
 
+export interface WordleGuess {
+  index?: string;
+  word?: string;
+  submitter?: string;
+  count?: string;
+}
+
 export type WordleMsgSubmitGuessResponse = object;
 
 export type WordleMsgSubmitWordleResponse = object;
@@ -91,6 +98,21 @@ export type WordleMsgSubmitWordleResponse = object;
  * Params defines the parameters for the module.
  */
 export type WordleParams = object;
+
+export interface WordleQueryAllGuessResponse {
+  guess?: WordleGuess[];
+
+  /**
+   * PageResponse is to be embedded in gRPC response messages where the
+   * corresponding request message has used PageRequest.
+   *
+   *  message SomeResponse {
+   *          repeated Bar results = 1;
+   *          PageResponse page = 2;
+   *  }
+   */
+  pagination?: V1Beta1PageResponse;
+}
 
 export interface WordleQueryAllWordleResponse {
   wordle?: WordleWordle[];
@@ -105,6 +127,10 @@ export interface WordleQueryAllWordleResponse {
    *  }
    */
   pagination?: V1Beta1PageResponse;
+}
+
+export interface WordleQueryGetGuessResponse {
+  guess?: WordleGuess;
 }
 
 export interface WordleQueryGetWordleResponse {
@@ -321,6 +347,48 @@ export class HttpClient<SecurityDataType = unknown> {
  * @version version not set
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryGuessAll
+   * @summary Queries a list of Guess items.
+   * @request GET:/YazzyYaz/wordle/wordle/guess
+   */
+  queryGuessAll = (
+    query?: {
+      "pagination.key"?: string;
+      "pagination.offset"?: string;
+      "pagination.limit"?: string;
+      "pagination.count_total"?: boolean;
+      "pagination.reverse"?: boolean;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<WordleQueryAllGuessResponse, RpcStatus>({
+      path: `/YazzyYaz/wordle/wordle/guess`,
+      method: "GET",
+      query: query,
+      format: "json",
+      ...params,
+    });
+
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryGuess
+   * @summary Queries a Guess by index.
+   * @request GET:/YazzyYaz/wordle/wordle/guess/{index}
+   */
+  queryGuess = (index: string, params: RequestParams = {}) =>
+    this.request<WordleQueryGetGuessResponse, RpcStatus>({
+      path: `/YazzyYaz/wordle/wordle/guess/${index}`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
   /**
    * No description
    *
