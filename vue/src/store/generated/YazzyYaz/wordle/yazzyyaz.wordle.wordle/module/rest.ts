@@ -20,6 +20,8 @@ export interface RpcStatus {
   details?: ProtobufAny[];
 }
 
+export type WordleMsgSubmitWordleResponse = object;
+
 /**
  * Params defines the parameters for the module.
  */

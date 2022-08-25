@@ -7,7 +7,16 @@ option go_package = "github.com/YazzyYaz/wordle/x/wordle/types";
 
 // Msg defines the Msg service.
 service Msg {
-    // this line is used by starport scaffolding # proto/tx/rpc
+      rpc SubmitWordle(MsgSubmitWordle) returns (MsgSubmitWordleResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgSubmitWordle {
+  string creator = 1;
+  string word = 2;
+}
+
+message MsgSubmitWordleResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
