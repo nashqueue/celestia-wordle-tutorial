@@ -90,7 +90,10 @@ export interface WordleGuess {
   count?: string;
 }
 
-export type WordleMsgSubmitGuessResponse = object;
+export interface WordleMsgSubmitGuessResponse {
+  title?: string;
+  body?: string;
+}
 
 export type WordleMsgSubmitWordleResponse = object;
 

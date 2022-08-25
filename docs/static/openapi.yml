@@ -52282,6 +52282,11 @@ definitions:
         type: string
   yazzyyaz.wordle.wordle.MsgSubmitGuessResponse:
     type: object
+    properties:
+      title:
+        type: string
+      body:
+        type: string
   yazzyyaz.wordle.wordle.MsgSubmitWordleResponse:
     type: object
   yazzyyaz.wordle.wordle.Params:

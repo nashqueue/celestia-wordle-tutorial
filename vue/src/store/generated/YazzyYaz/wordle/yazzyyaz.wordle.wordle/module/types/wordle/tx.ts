@@ -15,7 +15,10 @@ export interface MsgSubmitGuess {
   word: string;
 }
 
-export interface MsgSubmitGuessResponse {}
+export interface MsgSubmitGuessResponse {
+  title: string;
+  body: string;
+}
 
 const baseMsgSubmitWordle: object = { creator: "", word: "" };
 
@@ -207,10 +210,19 @@ export const MsgSubmitGuess = {
   },
 };
 
-const baseMsgSubmitGuessResponse: object = {};
+const baseMsgSubmitGuessResponse: object = { title: "", body: "" };
 
 export const MsgSubmitGuessResponse = {
-  encode(_: MsgSubmitGuessResponse, writer: Writer = Writer.create()): Writer {
+  encode(
+    message: MsgSubmitGuessResponse,
+    writer: Writer = Writer.create()
+  ): Writer {
+    if (message.title !== "") {
+      writer.uint32(10).string(message.title);
+    }
+    if (message.body !== "") {
+      writer.uint32(18).string(message.body);
+    }
     return writer;
   },
 
@@ -221,6 +233,12 @@ export const MsgSubmitGuessResponse = {
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
+        case 1:
+          message.title = reader.string();
+          break;
+        case 2:
+          message.body = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -229,18 +247,42 @@ export const MsgSubmitGuessResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgSubmitGuessResponse {
+  fromJSON(object: any): MsgSubmitGuessResponse {
     const message = { ...baseMsgSubmitGuessResponse } as MsgSubmitGuessResponse;
+    if (object.title !== undefined && object.title !== null) {
+      message.title = String(object.title);
+    } else {
+      message.title = "";
+    }
+    if (object.body !== undefined && object.body !== null) {
+      message.body = String(object.body);
+    } else {
+      message.body = "";
+    }
     return message;
   },
 
-  toJSON(_: MsgSubmitGuessResponse): unknown {
+  toJSON(message: MsgSubmitGuessResponse): unknown {
     const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.body !== undefined && (obj.body = message.body);
     return obj;
   },
 
-  fromPartial(_: DeepPartial<MsgSubmitGuessResponse>): MsgSubmitGuessResponse {
+  fromPartial(
+    object: DeepPartial<MsgSubmitGuessResponse>
+  ): MsgSubmitGuessResponse {
     const message = { ...baseMsgSubmitGuessResponse } as MsgSubmitGuessResponse;
+    if (object.title !== undefined && object.title !== null) {
+      message.title = object.title;
+    } else {
+      message.title = "";
+    }
+    if (object.body !== undefined && object.body !== null) {
+      message.body = object.body;
+    } else {
+      message.body = "";
+    }
     return message;
   },
 };
